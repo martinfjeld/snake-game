@@ -1,0 +1,351 @@
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+}
+
+.score-corner {
+  position: absolute;
+  left: 1rem;
+  top: 0rem;
+  text-align: left;
+  color: black;
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  border: 2px solid black;
+
+  &::before {
+    content: "";
+    width: 100%;
+    height: 20px;
+    border-radius: 0.5rem;
+    z-index: -1;
+    left: 0px;
+    bottom: -5px;
+    box-sizing: border-box;
+    border: 2px solid black;
+    background-color: whitesmoke;
+    position: absolute;
+  }
+}
+
+.board {
+  &-container {
+    width: 280px;
+    height: 280px;
+    position: relative;
+    border-radius: 1rem;
+    background-color: white;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+    .depth {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: white;
+      border: 2px solid black;
+      border-radius: 1rem;
+      top: 6px;
+      left: 0px;
+      box-sizing: border-box;
+      z-index: -1;
+    }
+
+    .pause,
+    .game-over,
+    .start-game,
+    .start-game-controls {
+      position: absolute;
+      width: 270px;
+      height: 270px;
+      z-index: 999999999;
+      border-radius: 0.7rem;
+      border: 2px solid black;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-transform: uppercase;
+      color: white;
+
+      &-btn {
+        color: #fff;
+        font-weight: 900;
+        border: 1px solid black;
+        padding: 0.5rem;
+        position: relative;
+        border-radius: 0.4rem;
+        -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+        -webkit-text-stroke-width: 0.5px;
+        -webkit-text-stroke-color: black;
+        -webkit-text-stroke: 0.5px black;
+        font-size: 1rem;
+        cursor: pointer;
+
+        &:active {
+          &::before {
+            bottom: -3px;
+          }
+        }
+
+        &::before {
+          content: "";
+          width: 100%;
+          height: 20px;
+          border-radius: 0.5rem;
+          z-index: -1;
+          left: -1px;
+          bottom: -5px;
+          border: 1px solid black;
+          position: absolute;
+        }
+      }
+
+      h1 {
+        font-weight: 900;
+        font-size: 1.8rem;
+        margin: 0;
+        -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+        -webkit-text-stroke-width: 1.3px;
+        -webkit-text-stroke-color: black;
+        -webkit-text-stroke: 0.5px black;
+
+        &.score {
+          -webkit-text-stroke-width: 0.5px;
+          -webkit-text-stroke: 0.5px black;
+          font-size: 1rem;
+        }
+      }
+    }
+
+    .settings-icon {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      right: 10px;
+      top: 10px;
+    }
+
+    .start-game {
+      background-color: #ffc0cb;
+      z-index: 999999999;
+
+      .difficulty {
+        display: flex;
+        font-size: 0.7rem;
+        margin: 1rem;
+        height: 2.5rem;
+
+        & > * {
+          font-weight: 900;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: 0.1rem;
+          border: 1px solid black;
+          border-radius: 0.5rem;
+          padding: 0.5rem;
+          background-color: white;
+          color: #ffc0cb;
+          position: relative;
+          cursor: pointer;
+
+          &.active {
+            bottom: -2px;
+            &::before {
+              bottom: -3px;
+            }
+          }
+
+          &:active {
+            bottom: -3px;
+            &::before {
+              bottom: -2px;
+            }
+          }
+
+          &::before {
+            content: "";
+            width: 100%;
+            height: 20px;
+            border-radius: 0.5rem;
+            z-index: -1;
+            left: -1px;
+            bottom: -4.5px;
+            border: 1px solid black;
+            position: absolute;
+            background-color: #bebebe;
+          }
+        }
+      }
+
+      .settings-btn {
+        font-size: 0.5rem;
+        position: absolute;
+        bottom: 0.1rem;
+        font-weight: 700;
+        border-radius: 1rem;
+        cursor: pointer;
+        color: #333;
+      }
+
+      &-controls {
+        color: #333;
+        padding: 0.5rem;
+        font-size: 0.8rem;
+        margin: 0;
+        text-align: center;
+        background-color: #ffc0cb;
+
+        .sound-control {
+          border: none;
+          background: none;
+          width: 2.5rem;
+          height: 2.5rem;
+          position: absolute;
+          top: 10px;
+          right: 10px;
+
+          img {
+            width: 100%;
+            height: auto;
+          }
+        }
+
+        .go-back {
+          cursor: pointer;
+          border: 1px solid black;
+          -webkit-text-fill-color: #ffc0cb; /* Will override color (regardless of order) */
+          -webkit-text-stroke-width: 1px;
+          -webkit-text-stroke-color: #333;
+          background-color: #fff;
+          justify-content: center;
+          align-items: center;
+          position: absolute;
+          display: flex;
+          top: 1rem;
+          border-radius: 50%;
+          left: 1rem;
+          width: 1.5rem;
+          margin: 0;
+          height: 1.5rem;
+          font-size: 1.5rem;
+          padding: 0.2rem;
+          font-weight: 900;
+          color: #ffc0cb;
+        }
+
+        p {
+          font-weight: 900;
+          margin: 0;
+          padding: 0;
+          padding-top: 1rem;
+
+          -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+          -webkit-text-stroke-width: 0.7px;
+          letter-spacing: 1px;
+          -webkit-text-stroke-color: #333;
+          -webkit-text-stroke: 0.7px #333;
+        }
+
+        &-container {
+          display: flex;
+          font-weight: 900;
+          justify-content: space-around;
+
+          &_btn {
+            background-color: white;
+            margin: 3px;
+            padding: 0.2rem;
+            border: 1px solid black;
+            border-radius: 0.2rem;
+          }
+        }
+      }
+
+      &-btn {
+        background-color: #7bb4ff;
+
+        &::before {
+          background-color: #5680b8;
+        }
+      }
+    }
+
+    .pause {
+      background-color: orange;
+    }
+
+    .game-over {
+      background-color: #7bb4ff;
+
+      &-btn {
+        background-color: #ffc0cb;
+        margin-top: 1rem;
+
+        &::before {
+          background-color: #be8f97;
+        }
+      }
+    }
+  }
+
+  width: 270px;
+  height: 270px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border-radius: 0.7rem;
+  border: 2px solid black;
+  box-sizing: border-box;
+  background-color: #ff7bac;
+  z-index: 888888;
+
+  .brick {
+    box-sizing: border-box;
+    width: 10%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .dot {
+    border: 2px solid black;
+    box-sizing: border-box;
+    background-color: #fbb03b;
+    border-radius: 100%;
+    z-index: 999;
+  }
+
+  .current {
+    border: 2px solid black;
+    background-color: #ffcfff;
+    border-radius: 3px !important;
+  }
+}
+
+html,
+body {
+  overflow: hidden;
+  position: fixed;
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+}
+body {
+  margin: auto;
+  position: relative;
+  background-color: rgb(181, 232, 255);
+}
